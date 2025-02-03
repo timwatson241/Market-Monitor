@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for market-monitor on 2025-02-02T21:30:28-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'market-monitor'
+primary_region = 'yyz'
+
+[build]
+  dockerfile = 'Dockerfile'
+
+[deploy]
+  strategy = 'immediate'
+
+[processes]
+  app = 'python market_monitor.py'
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+
+[[metrics]]
+  port = 9091
+  path = '/metrics'
+  https = false
